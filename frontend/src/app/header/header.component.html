@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-Secondary">
+  <div class="container-fluid">
+    <div class="border-0">
+      <a class="navbar-brand">  <img src="../../assets/images/titleLogo.png" alt="Bootstrap" style="height: 50px; width:auto"></a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Home without login -->
+        <li class="nav-item">
+          <a *ngIf="!isLoggedIn()" class="nav-link active" aria-current="page" routerLink="/" >Home</a>
+        </li>
+
+        <!-- Home if Admin -->
+        <li class="nav-item">
+          <a *ngIf="isAdmin()"  class="nav-link active"  routerLink="/admin" >
+            Home
+          </a>
+        </li>
+
+
+        <li *ngIf="isAdmin()" class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/admin/staff-handling">
+            Staff
+          </a>
+        </li>
+
+        <li *ngIf="isAdmin()" class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="admin/customers">
+            Customers
+          </a>
+        </li>
+
+        <!-- <li *ngIf="isAdmin()" class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/view-project">
+            Project
+          </a>
+        </li> -->
+
+        <!-- Home if Staff -->
+        <li class="nav-item">
+          <a *ngIf="isStaff()"  class="nav-link active" aria-current="page" routerLink="/staff">Home</a>
+        </li>
+
+        <!-- Home if Customer -->
+        <li class="nav-item">
+          <a *ngIf="isCustomer()"  class="nav-link active" aria-current="page" routerLink="/customer">Home</a>
+        </li>
+
+        <!-- for customer -->
+        <!-- <li class="nav-item">
+          <a *ngIf="isCustomer()"  class="nav-link active" aria-current="page" routerLink="/customer/project">Project</a>
+        </li> -->
+
+      </ul>
+      <button *ngIf="!isLoggedIn()" type="button" class="btn btn-dark" routerLink="/login-landing"
+        (click)="defaultUser()">
+        Login
+      </button>
+      <button *ngIf="isLoggedIn()" type="button" class="btn btn-dark" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
